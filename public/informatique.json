@@ -1,0 +1,18 @@
+{
+  "title": "Questionnaire sur l'Informatique",
+  "minimum_score": 60,
+  "success_message": "Félicitations ! Vous êtes un véritable expert en informatique !",
+  "failure_message": "N'hésitez pas à approfondir vos connaissances en informatique.",
+  "questions": [
+    {
+      "question": "Quel langage de programmation est souvent utilisé pour créer des sites web ?",
+      "choices": ["Java", "Python", "JavaScript", "C++"],
+      "correct_answer": "JavaScript"
+    },
+    {
+      "question": "Quelle est la complexité temporelle moyenne d'un tri rapide ?",
+      "choices": ["O(n)", "O(n log n)", "O(n²)", "O(2^n)"],
+      "correct_answer": "O(n log n)"
+    }
+  ]
+}

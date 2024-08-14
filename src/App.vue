@@ -4,7 +4,7 @@
       Impossible de charger le quiz
     </p>
     <div :aria-busy="state === 'loading'">
-      <Quiz :quiz="quiz" v-if="quiz"></Quiz>
+      <Quiz :quiz="quiz" v-if="quiz"/>
     </div>
   </div>
 </template>
@@ -16,7 +16,7 @@
   const state = ref('loading')
 
 onMounted(()=>{
-  fetch('./public/quiz.json')
+  fetch('./public/informatique.json')
   .then(response => {
     if(response.ok){
       return response.json()

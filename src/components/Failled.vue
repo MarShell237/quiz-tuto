@@ -58,7 +58,7 @@
   border-radius: 8px;
   box-sizing: border-box;
   padding: 10px 15px;
-  background-color: #ffffff;
+  background-color: #13171F;
   box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
   position: relative;
   overflow: hidden;
@@ -109,7 +109,7 @@
 }
 .sub-text {
   font-size: 14px;
-  color: #555;
+  color: white;
 }
 .cross-icon {
   width: 18px;

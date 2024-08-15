@@ -16,26 +16,213 @@
   const state = ref('loading')
 
 onMounted(()=>{
-  fetch('./public/informatique.json')
-  .then(response => {
-    if(response.ok){
-      return response.json()
+  // fetch('./public/informatique.json')
+  // .then(response => {
+  //   if(response.ok){
+  //     return response.json()
       
-    }
-    throw new Error('impossible de recuperer le json')
-  })    
-  .then(data => {
-    quiz.value = data;
+  //   }
+  //   throw new Error('impossible de recuperer le json')
+  // })    
+  // .then(data => {
+  //   quiz.value = data;
+  //   state.value = 'idle'
+  // })
+  // .catch(err => {
+    //   state.value = 'error'
+    // })
+    
     state.value = 'idle'
-  })
-  .catch(err => {
-    state.value = 'error'
-  })
+    let text = `{
+  "title": "Questionnaire sur l'Informatique",
+  "minimum_score": 25,
+  "success_message": "Félicitations ! Vous êtes un véritable expert en informatique !",
+  "failure_message": "N'hésitez pas à approfondir vos connaissances en informatique.",
+  "questions": [
+    {
+      "question": "Quel langage de programmation est souvent utilisé pour créer des sites web ?",
+      "choices": ["Java", "Python", "JavaScript", "C++"],
+      "correct_answer": "JavaScript"
+    },
+    {
+      "question": "Quelle est la complexité temporelle moyenne d'un tri rapide ?",
+      "choices": ["O(n)", "O(n log n)", "O(n²)", "O(2^n)"],
+      "correct_answer": "O(n log n)"
+    },
+    {
+      "question": "Qu'est-ce qu'un algorithme glouton ?",
+      "choices": ["Un algorithme qui trouve toujours la meilleure solution", "Un algorithme qui fait des choix locaux optimaux à chaque étape", "Un algorithme qui utilise la force brute", "Un algorithme qui divise un problème en sous-problèmes"],
+      "correct_answer": "Un algorithme qui fait des choix locaux optimaux à chaque étape"
+  },
+  {
+      "question": "Quel protocole est utilisé pour envoyer des courriels ?",
+      "choices": ["HTTP", "FTP", "SMTP", "POP3"],
+      "correct_answer": "SMTP"
+  },
+  {
+      "question": "Qu'est-ce qu'une base de   données relationnelle ?",
+      "choices": ["Une base de données qui stocke des données hiérarchisées", "Une base de données qui stocke des données dans des tableaux liés entre eux", "Une base de données qui stocke des données non structurées", "Une base de données qui stocke des données temporelles"],
+      "correct_answer": "Une base de données qui stocke des données dans des tableaux liés entre eux"
+  },
+  {
+      "question": "Quel système d'exploitation est le plus utilisé pour les serveurs web ?",
+      "choices": ["Windows", "Linux", "macOS", "Android"],
+      "correct_answer": "Linux"
+  },
+  {
+      "question": "Qu'est-ce qu'un réseau neuronal ?",
+      "choices": ["Un modèle informatique inspiré du cerveau humain", "Un réseau informatique très rapide", "Un réseau sans fil", "Un réseau de capteurs"],
+      "correct_answer": "Un modèle informatique inspiré du cerveau humain"
+  },
+  {
+      "question": "Quelle est la différence entre un compilateur et un interprète ?",
+      "choices": ["Un compilateur traduit le code source en code machine, un interprète l'exécute ligne par ligne", "Un compilateur exécute le code source directement, un interprète le traduit en code machine", "Il n'y a pas de différence", "Un compilateur est plus rapide qu'un interprète"],
+      "correct_answer": "Un compilateur traduit le code source en code machine, un interprète l'exécute ligne par ligne"
+  },
+  {
+      "question": "Lequel de ces langages informatiques est un langage de bas niveau ?",
+      "choices": ["Python", "Perl", "Javascript", "Assembleur"],
+      "correct_answer": "Assembleur"
+  },
+  {
+      "question": "Sur Internet, comment appelle-t-on les techniques d'investigation sur de l'information en source ouverte ?",
+      "choices": ["TECINT", "HUMINT", "OSINT", "SEEYERS"],
+      "correct_answer": "OSINT"
+  },
+  {
+      "question": "Le nombre binaire 1011 vaut en décimal",
+      "choices": ["7", "9", "33", "11"],
+      "correct_answer": "11"
+  },
+  {
+      "question": "Combien y'a t-il d'octets dans un ko (kilo-octet)",
+      "choices": ["1000", "1024", "1048", "2048"],
+      "correct_answer": "1024"
+  },
+  {
+      "question": "Un clavier français est un clavier",
+      "choices": ["AZERTY", "QWERTY", "Type 12", "Type 02"],
+      "correct_answer": "AZERTY"
+  },
+  {
+      "question": "Qu'est-ce qu'un upgrade",
+      "choices": ["Une mise à jour", "Le chargement d'un fichier informatique vers un autre ordinateur", "Un diplôme d'informaticien", "Un système d’exploitation"],
+      "correct_answer": "Une mise à jour"
+  },
+  {
+      "question": "TIFF est un format",
+      "choices": ["d'images", "de base de données", "de Terminal Informatique de type FF", "de protocole internet"],
+      "correct_answer": "d'images"
+  },
+  {
+      "question": "En gestion de projet qui appelle-t-on maîtrise d'ouvrage",
+      "choices": ["le client", "le prestataire", "la société chargée de l'accompagnement", "les utilisateurs"],
+      "correct_answer": "la société chargée de l'accompagnement"
+  },
+  {
+      "question": "UML est",
+      "choices": ["La partie « données » de la méthode MERISE", "un standard de communication", "un type de port", "un langage de modélisation"],
+      "correct_answer": "un langage de modélisation"
+  },
+  {
+      "question": "Pour séparer un disque dur physique en deux disques logiques, il faut",
+      "choices": ["Formater le disque", "Le partitionner", "Le partager", "le destructurer"],
+      "correct_answer": "Le partitionner"
+  },
+  {
+      "question": "Une mémoire ne peut pas être de type ",
+      "choices": ["ROM", "RUM", "RAM", "CACHE"],
+      "correct_answer": "RUM"
+  },
+  {
+      "question": "Un firewall (pare feu), trouver l'affirmation fausse ",
+      "choices": ["peut bloquer les intrusions sur votre ordinateur", "vous protège des virus", "peut interdire l'accès à certains sites", "peut permettre de mettre sur pied un control parental"],
+      "correct_answer": "vous protège des virus"
+  },
+  {
+      "question": "Quel code de réponse HTTP 1.0 est faux",
+      "choices": ["200 : la requête s'est déroulée correctement", "400 : erreur de syntaxe dans la requête envoyé par le client", "404 : la ressource demandée n'existe pas", "500 : requête acceptée, traitement en cours"],
+      "correct_answer": "500 : requête acceptée, traitement en cours"
+  },
+  {
+      "question": "Un cookie sur internet, peut",
+      "choices": ["être un programme", "contenir un virus", "paramétrer de façon personnalisé la page d'accueil d'un site web", "saturer votre disque dur"],
+      "correct_answer": "paramétrer de façon personnalisé la page d'accueil d'un site web"
+  },
+  {
+      "question": "Une URL (Uniform Resource Locator) est composé obligatoirement de certains éléments, ci dessous, un est facultatif",
+      "choices": ["du protocole de communication", " du nom du serveur", "du port", "de l'extension"],
+      "correct_answer": "du port"
+  },
+  {
+      "question": "L'adresse de « classe A » comprend",
+      "choices": ["16 millions d'adresses", "65.000 adresses", "256 adresses", "25 adresses"],
+      "correct_answer": "16 millions d'adresses"
+  },
+  {
+      "question": "Comment se nomme le format de codage le plus courant des pages Internet",
+      "choices": ["HTTP", "Java", "HTML", "XML"],
+      "correct_answer": "HTML"
+  },
+  {
+      "question": "XML",
+      "choices": ["est un format de description de données", "ne permet pas de séparer le contenu de la présentation", "n'est pas portable d'une plate forme à une autre", "un language de programmation"],
+      "correct_answer": "est un format de description de données"
+  },
+  {
+      "question": "HTTPS est : trouver l'affirmation fausse ",
+      "choices": ["procédé de sécurisation des transactions HTTP", "HTTPS travaille au niveau de la couche transport", "Il permet de fournir une sécurisation des échanges lors de transactions de commerce électronique en cryptant les messages", "est un protocole"],
+      "correct_answer": "HTTPS travaille au niveau de la couche transport"
+  },
+  {
+      "question": "Quel protocole est dédié à la transmission de fichiers sur Internet",
+      "choices": ["Gropher", "HTTP", "FTP", "SMTP"],
+      "correct_answer": "FTP"
+  },
+  {
+      "question": "Qu'est-ce que le SMTP",
+      "choices": ["Un protocole de transmission de courrier électronique", "Un protocole de réception de courrier électronique sécurisé", "Un protocole réseau pour internet", "Une organisation internationale chargee de l'envoi des courrier électronique"],
+      "correct_answer": "Un protocole de transmission de courrier électronique"
+  },
+  {
+      "question": "Qu'est ce que le MP3 ",
+      "choices": ["Une méthode de protection de fichiers audio", "Un protocole d'échange de fichiers audio", "Un format de compression de données audio", "Un lecteur audio"],
+      "correct_answer": "Un format de compression de données audio"
+  },
+  {
+      "question": "Le HTML est un langage dit",
+      "choices": ["Encodé", "Cryté", "Balisé", "Interpreter"],
+      "correct_answer": "Balisé"
+  },
+  {
+      "question": "Pour améliorer le référencement d’un site, on peut utiliser, trouver l'affirmation fausse",
+      "choices": ["un titre décrit dans l'en-tête de la page web entre les balises <TITLE> et </TITLE>", "un contenu « transparent » qui comporte un maximum de texte, indexable par les moteurs", "indiquer en début de page HTML (BODY) le nom des principaux moteurs de recherche", "utiliser des balises META"],
+      "correct_answer": "un contenu « transparent » qui comporte un maximum de texte, indexable par les moteurs"
+  },
+  {
+      "question": "Que désigne-t-on par 'bande passante'",
+      "choices": ["La quantité de données maximale transmissible par unité de temps", "La quantité de données maximale transmise par unité de temps", "La quantité de données minimale transmissible par unité de temps", "La quantité de données minimale transmissible par unité de longueur"],
+      "correct_answer": "La quantité de données maximale transmise par unité de temps"
+  },
+  {
+      "question": "La commande « ping » sert à",
+      "choices": ["rien", "vérifier le temps de réponse d'une machine distante", "connaître le chemin pour atteindre une machine distante", "se connecter au serveur en ligne de commande"],
+      "correct_answer": "vérifier le temps de réponse d'une machine distante"
+  },
+  {
+      "question": "Quel est le tag à utiliser pour placer une image",
+      "choices": ["<image src='' alt=''>", "<img source='' alt=''>", "<img src='' alt=''>", "<img src='' alter=''>"],
+      "correct_answer": "<img src='' alt=''>"
+  }
+  ]
+}`;
+  quiz.value = JSON.parse(text);
+  // console.log(typeof JSON.parse(text))
 })
 </script>
 
 <style scoped>
-  .container{
-    margin-top: 2rem;
-  }
+.container{
+  margin-top: 2rem;
+}
 </style>
